@@ -3,7 +3,7 @@ import * as THREE from "three";
 import * as CANNON from "cannon-es";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Pillar } from "./Pillar";
-import { Floor } from "./floor";
+import { Floor } from "./Floor";
 import { Bar } from "./Bar";
 import { SideLight } from "./SideLight";
 import { Glass } from "./Glass";
@@ -23,6 +23,7 @@ const defaultContactMaterial = new CANNON.ContactMaterial(
     restitution: 0.2,
   }
 );
+
 const glassDefaultContactMaterial = new CANNON.ContactMaterial(
   cm1.glassMaterial,
   cm1.defaultMaterial,
