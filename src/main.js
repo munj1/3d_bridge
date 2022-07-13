@@ -364,9 +364,6 @@ function draw() {
   objects.forEach((item) => {
     if (item.cannonBody) {
       if (item.name == "player") {
-        item.mesh.position.copy(item.cannonBody.position);
-        if (fail) item.mesh.quaternion.copy(item.cannonBody.quaternion);
-
         if (item.modelMesh) {
           item.modelMesh.position.copy(item.cannonBody.position);
           if (fail) item.modelMesh.quaternion.copy(item.cannonBody.quaternion);

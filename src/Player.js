@@ -10,15 +10,13 @@ export class Player extends Stuff {
     this.height = 0.5;
     this.depth = 0.5;
 
-    this.mesh = new Mesh(
-      new BoxGeometry(this.width, this.height, this.depth),
-      new MeshBasicMaterial({ transparent: true, opacity: 0 })
-    );
-    this.mesh.castShadow = true;
-    this.mesh.position.set(this.x, this.y, this.z);
-    cm1.scene.add(this.mesh);
-
     cm1.gltfLoader.load("models/ilbuni.glb", (glb) => {
+      glb.scene.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+        }
+      }); //foreach와비슷
+
       this.modelMesh = glb.scene.children[0];
       // 사실 포지션과 rotation은 물리엔진 세팅할때 적용하면되니까 굳이 이렇게 안해줘도되긴함
       this.modelMesh.position.set(this.x, this.y, this.z);
